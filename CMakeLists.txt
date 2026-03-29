@@ -16,3 +16,9 @@ FetchContent_MakeAvailable(math_lib)
 target_link_libraries(${PROJECT_NAME} PRIVATE math_lib)
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
+
+if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang|GNU")
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        CXX_CLANG_TIDY "clang-tidy;--config-file=${CMAKE_SOURCE_DIR}/.clang-tidy"
+    )
+endif()
