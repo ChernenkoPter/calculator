@@ -22,3 +22,9 @@ if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang|GNU")
         CXX_CLANG_TIDY "clang-tidy;--config-file=${CMAKE_SOURCE_DIR}/.clang-tidy"
     )
 endif()
+
+include(GNUInstallDirs)
+
+install(TARGETS ${PROJECT_NAME}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
