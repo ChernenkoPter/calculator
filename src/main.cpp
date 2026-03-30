@@ -33,9 +33,11 @@ bool stoint64(const char* s, int64_t& result) {
     bool has_minus = (s[0] == '-');
     if (has_minus && s[1] == '\0')
         return false;
-    if (s[has_minus] == '0')
+    if (has_minus && s[1] == '0')
         return false;
     result = 0;
+    if (s[0] == '0')
+        return s[1] == '\0';
     for (size_t i = has_minus; s[i] != '\0'; i++) {
         if (s[i] < '0' || s[i] > '9')
             return false;
