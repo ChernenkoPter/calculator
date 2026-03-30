@@ -8,9 +8,9 @@ struct options {
 };
 
 bool parse(int argc, char* argv[], options& opts) {
-    static struct option long_options[] = {{"help", required_argument, 0, 'h'},
-                                           {0, 0, 0, 0}};
-    if (getopt(argc, argv, "h") != -1)
+    static struct option long_options[] = {{"help", 0, 0, 0}, {0, 0, 0, 0}};
+    int opt_index = 0;
+    if (getopt_long(argc, argv, "", long_options, &opt_index) != -1)
         return false; // just print help
     int remaining_argc = argc - optind;
     if (remaining_argc == 1)
@@ -87,9 +87,9 @@ bool check(const options& opts, ml::Calculation& calc) {
 }
 
 void print_help(const char* program) {
-    fprintf(
-        stderr,
-        "Usage: %s <left_operand> [+-/*^] <right_operand> or %s <operand> !\n"
+    fprintf(stderr,
+            "Usage: %s -- <left_operand> [+-/*^] <right_operand> or "
+            "%s -- <operand> !\n"
         "where operands are integers in range [-2^64 - 1; 2^64]\n",
         program, program);
 }
