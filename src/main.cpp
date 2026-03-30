@@ -39,12 +39,19 @@ bool stoint64(const char* s, int64_t& result) {
     if (s[0] == '0')
         return s[1] == '\0';
     for (size_t i = has_minus; s[i] != '\0'; i++) {
-        if (s[i] < '0' || s[i] > '9')
+        int last_digit = s[i] - '0';
+        if (last_digit < 0 || last_digit > 9)
             return false;
-        if ((has_minus && INT64_MIN / 10 > result) ||
-            (INT64_MAX / 10 < result || INT64_MAX - (s[i] - '0') < 10 * result))
+        if (INT64_MIN / 10 > result || INT64_MIN + last_digit > 10 * result ||
+            INT64_MAX / 10 < result || INT64_MAX - last_digit < 10 * result)
             return false;
-        result = result * 10 + (s[i] - '0');
+        if (has_minus) {
+            if (i == 1)
+                result = -1 * last_digit;
+            else
+                result = result * 10 - last_digit;
+        } else
+            result = result * 10 + last_digit;
     }
     return true;
 }
