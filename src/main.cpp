@@ -99,8 +99,8 @@ void print_help(const char* program) {
     fprintf(stderr,
             "Usage: %s -- <left_operand> [+-/*^] <right_operand> or "
             "%s -- <operand> !\n"
-        "where operands are integers in range [-2^64 - 1; 2^64]\n",
-        program, program);
+            "where operands are integers in range [-2^64 - 1; 2^64]\n",
+            program, program);
 }
 
 void print_result(const ml::Calculation& calc) {
