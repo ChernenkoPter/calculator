@@ -99,7 +99,7 @@ void print_help(const char* program) {
     fprintf(stderr,
             "Usage: %s -- <left_operand> [+-/*^] <right_operand> or "
             "%s -- <operand> !\n"
-            "where operands are integers in range [-2^64 - 1; 2^64]\n",
+            "where operands are integers in range [-2^64; 2^64 - 1]\n",
             program, program);
 }
 
