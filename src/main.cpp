@@ -107,7 +107,7 @@ void print_result(const ml::Calculation& calc) {
     if (calc.error == ml::Calculation::ErrorCode::NoError)
         fprintf(stdout, "%" PRId64 "\n", calc.result);
     else
-        fprintf(stderr, "%s", ml::to_str(calc.error));
+        fprintf(stderr, "%s\n", ml::to_str(calc.error));
 }
 
 void run(int argc, char* argv[]) {
