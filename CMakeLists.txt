@@ -6,7 +6,7 @@ include(FetchContent)
 FetchContent_Declare(
     math_lib
     GIT_REPOSITORY https://github.com/ChernenkoPter/math_lib.git
-    GIT_TAG main
+    GIT_TAG second_hometask
 )
 
 FetchContent_Declare(
