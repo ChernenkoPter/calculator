@@ -1,5 +1,9 @@
-BasedOnStyle: LLVM
+AlignAfterOpenBracket: Align
+AllowShortFunctionsOnASingleLine: Inline
+BraceBreakingStyle: AttachBasedOnStyle: LLVM
+BreakBeforeBraces: Attach
+ColumnLimit: 120
 IndentWidth: 4
 UseTab: Never
-BreakBeforeBraces: Attach
 PointerAlignment: Left
+SortIncludes: true
