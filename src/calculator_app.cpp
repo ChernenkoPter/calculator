@@ -118,7 +118,3 @@ void CalculatorApp::print_help(const std::string& program_name) {
 void CalculatorApp::print_result(int64_t value) {
     std::cout << value << std::endl;
 }
-
-void CalculatorApp::print_error(const std::string& what) {
-    std::cerr << what << std::endl;
-}

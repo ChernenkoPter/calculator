@@ -16,5 +16,4 @@ private:
     void print_help(const std::string& program_name);
 
     void print_result(int64_t value);
-    void print_error(const std::string& what);
 };
