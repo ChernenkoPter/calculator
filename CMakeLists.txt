@@ -1,8 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project(calculator VERSION 0.1.0 LANGUAGES CXX)
 
-add_executable(${PROJECT_NAME} src/main.cpp)
-
 include(FetchContent)
 
 FetchContent_Declare(
@@ -11,9 +9,24 @@ FetchContent_Declare(
     GIT_TAG main
 )
 
-FetchContent_MakeAvailable(math_lib)
+FetchContent_Declare(
+    spdlog
+    GIT_REPOSITORY https://github.com/gabime/spdlog.git
+    GIT_TAG v1.14.1
+)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE math_lib)
+# nlohmann/json
+FetchContent_Declare(
+    json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    GIT_TAG v3.11.3
+)
+
+FetchContent_MakeAvailable(math_lib spdlog json)
+
+add_executable(${PROJECT_NAME} src/main.cpp)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE math_lib spdlog::spdlog nlohmann_json::nlohmann_json)
 
 target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_17)
 
