@@ -16,8 +16,13 @@ int CalculatorApp::run(int argc, char* argv[]) {
         return 1;
     }
 
-    std::string json_str(argv[1]);
-    std::optional<ml::Calculation> calc = parse_json(json_str);
+    std::string arg{argv[1]};
+    if (arg == "-h" || arg == "--help") {
+        print_help(argv[0]);
+        return 0;
+    }
+
+    std::optional<ml::Calculation> calc = parse_json(arg);
 
     if (!calc) {
         print_help(argv[0]);
