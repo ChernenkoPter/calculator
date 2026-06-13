@@ -15,7 +15,6 @@ FetchContent_Declare(
     GIT_TAG v1.14.1
 )
 
-# nlohmann/json
 FetchContent_Declare(
     json
     GIT_REPOSITORY https://github.com/nlohmann/json.git
