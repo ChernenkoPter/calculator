@@ -42,3 +42,10 @@ include(GNUInstallDirs)
 install(TARGETS ${PROJECT_NAME}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+option(BUILD_TESTS "Build unit tests" OFF)
+option(BUILD_MATH_LIB_TESTS "Build math_lib tests" OFF)
+
+if(BUILD_TESTS)
+  add_subdirectory(gtests)
+endif()
